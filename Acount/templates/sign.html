@@ -1,0 +1,28 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/disign.css' %}">
+    <link rel="icon shortcat" type="image/x-icon" href="{% static 'image/me.jpg' %}">
+    <title>Resgister</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="flex-box">
+        <div>
+            {% for i in messages %}
+            <h1>{{ i }}</h1>
+            {% endfor %}
+        </div>
+        <form action="." method="POST">
+            {% csrf_token %} first_name: <input type="text" name="first_name" placeholder="enter first name"><br> last_name: <input type="text" name="last_name" placeholder="enter last name"><br> email: <input type="email" name="email" placeholder="enter email"><br>            username: <input type="text" name="username" placeholder="type username"><br> password: <input type="password" name="password" placeholder="enter password"><br> confirm_password: <input type="password" name="password1" placeholder="re-enter password"><br>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

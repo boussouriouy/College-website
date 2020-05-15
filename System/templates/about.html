@@ -1,0 +1,23 @@
+{% extends 'main.html'%} {% block content %}
+<header>
+    <h1>Welcome to NYU-CCTOP Club</h1>
+    <ul>
+        {% if user.is_authenticated %}
+        <h2>
+            <li>Hello, {{user.first_name}} </li>
+        </h2>
+        <li><a href="/System/main">Main page</a></li>
+        <li><a href="/System/about">About page</a></li>
+        <li><a href="/System/info">Information page</a></li>
+        <li style="float: right;"><a href="/Acount">logout</a></li>
+        {% else %}
+        <li><a href="/Acount/go_in">Login</a></li>
+        <li><a href="/Acount/register">Register</a></li>
+        {% endif %}
+    </ul>
+</header>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<main>
+
+</main>
+{% endblock %}

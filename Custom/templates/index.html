@@ -1,0 +1,46 @@
+{% load static %} {% static "pictures/image" as baseUrl%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcat" type="image/x" href="{% static 'pictures/image/me.jpg' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>System</title>
+</head>
+
+<body>
+    <header>
+        <h1>Mamadou Boussouriou Diallo</h1>
+        <ul>
+            <li><a href="/System/main">Main page</a></li>
+            <li><a href="/System/about">About page</a></li>
+            <li><a href="/System/info">Information page</a></li>
+        </ul>
+    </header>
+
+    {% block content %}
+    <h2>E BOARD MEMBERS</h2>
+    <div class="flex-box">
+        {% for i in descript %}
+        <div class="flex-box1">
+            <div class="image">
+                <img src="{{ i.img.url}}">
+            </div>
+            {% if i.offer %}
+            <i>Discount Available</i> {% endif %}
+            <div>
+                <h2>{{ i.name }}</h2>
+                <p>{{ i.desc}}</p>
+                <div>from {{ i.price }}</div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endblock%}
+
+</body>
+
+</html>

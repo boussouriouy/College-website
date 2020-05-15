@@ -1,0 +1,58 @@
+{% load static %} {% static "pictures/image" as baseUrl%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon shortcat" type="image/x-icon" href="{% static 'pictures/image/me.jpg' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>System</title>
+</head>
+
+<body>
+    {% block content %}
+    <header>
+        <h1>Welcome to <span style="color: blueviolet;"> NYU-CCTOP</span> Community</h1>
+        <ul>
+            {% if user.is_authenticated %}
+            <h2>
+                <li>Hello, {{user.first_name}} </li>
+            </h2>
+            <li><a href="/System/main">Main page</a></li>
+            <li><a href="/System/about">About page</a></li>
+            <li><a href="/System/info">Information page</a></li>
+            <li style="float: right;"><a href="/Acount">logout</a></li>
+            {% else %}
+            <li><a href="/Acount/go_in">Login</a></li>
+            <li><a href="/Acount/register">Register</a></li>
+            {% endif %}
+        </ul>
+    </header>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <main>
+        <h2>E BOARD MEMBERS</h2>
+        <div class="flex-box">
+            {% for i in descript %}
+            <div class="flex-box1">
+                <div class="image">
+                    <img src="{{baseUrl}}/{{ i.img}}">
+                </div>
+                {% if i.offer %}
+                <i>Discount Available</i> {% endif %}
+                <div>
+                    <h3>{{ i.name }}</h3>
+                    <p>{{ i.desc}}</p>
+                    <div>from {{ i.price }}</div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </main>
+
+    {% endblock%}
+
+</body>
+
+</html>
